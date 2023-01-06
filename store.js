@@ -1,4 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit'
-import { navSlice } from './slices/navSlice'
+import { configureStore } from "@reduxjs/toolkit";
+import navSlice from "./slices/navSlice";
 
-export default store = configureStore({ reducer: { nav: navSlice } })
+export default store = configureStore({ reducer: { nav: navSlice } });

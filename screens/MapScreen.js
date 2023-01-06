@@ -1,10 +1,37 @@
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
+import tw from "tailwind-react-native-classnames";
+import Map from "../components/Map";
+import NavigateCard from "../components/NavigateCard";
+import RideOptionsCard from "../components/RideOptionsCard";
 
 const MapScreen = () => {
+  const Stack = createNativeStackNavigator();
+
   return (
     <View>
-      <Text>Hello to the map stuff...</Text>
+      <View style={tw`h-1/2`}>
+        <Map />
+      </View>
+      <View style={tw`h-1/2`}>
+        <Stack.Navigator>
+          <Stack.Screen
+            component={NavigateCard}
+            name="NavigateCard"
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            component={RideOptionsCard}
+            name="RideOptionsCard"
+            options={{
+              headerShown: false,
+            }}
+          />
+        </Stack.Navigator>
+      </View>
     </View>
   );
 };

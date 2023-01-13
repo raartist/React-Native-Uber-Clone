@@ -4,6 +4,7 @@ import { Image, SafeAreaView, StyleSheet, View } from "react-native";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { useDispatch } from "react-redux";
 import tw from "tailwind-react-native-classnames";
+import NavFavourites from "../components/NavFavourites";
 import NavOptions from "../components/NavOptions";
 import { setDestination, setOrigin } from "../slices/navSlice";
 
@@ -32,7 +33,6 @@ const Home = () => {
             },
           }}
           onPress={(data, details = null) => {
-            console.log(details.geometry.location);
             dispatch(
               setOrigin({ location: details.geometry.location, description: data.description })
             );
@@ -47,6 +47,7 @@ const Home = () => {
           debounce={400}
         />
         <NavOptions />
+        <NavFavourites />
       </View>
     </SafeAreaView>
   );

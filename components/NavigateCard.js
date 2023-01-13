@@ -5,19 +5,20 @@ import React from "react";
 import { Pressable, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Icon } from "react-native-elements";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import tw from "tailwind-react-native-classnames";
-import { setDestination } from "../slices/navSlice";
+import { selectUserName, setDestination } from "../slices/navSlice";
 import NavFavourites from "./NavFavourites";
 
 const NavigateCard = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
+  const userName = useSelector(selectUserName);
 
   return (
     <SafeAreaView style={tw`bg-white flex-1`}>
       <Pressable onPress={() => navigation.navigate("RideOptionsCard")}>
-        <Text style={tw`text-center py-5 text-xl`}>Good Morning, Aditya!</Text>
+        <Text style={tw`text-center py-5 text-xl`}>Good Morning, {userName}!</Text>
       </Pressable>
       <View style={tw`border-t border-gray-200 flex-shrink`}>
         <GooglePlacesAutocomplete
